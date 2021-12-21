@@ -1,20 +1,36 @@
 import React from 'react'
-import { Form, Button, Nav, Container,Navbar } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
+const marks = ['renault', 'opel', 'ford'];
+const categoryArr = ['cat1', 'cat2'];
 
-export default function ProductListFilter() {
+export default function ProductListFilter(props) {
+    props = {
+        "brands": marks,
+        "category": categoryArr
+    };
     return (
         <div class="p-3">
-        
-            
-            <div class="brand-container borde">
+
+
+            <div class="brand-container ">
                 <div><b>Markalar</b></div>
-            
-                Filtrele textbox
-            <Form.Check type="checkbox" label="Marka 1" />
-            <Form.Check type="checkbox" label="Marka 2" />
+                {
+                    props.brands.map(x => (
+                        <Form.Check type="checkbox" label={x} />
+                    ))
+                }
             </div>
 
- 
+            <div class="category-container ">
+                <div><b>Kategoriler</b></div>
+                {
+                    props.category.map(x => (
+                        <Form.Check type="checkbox" label={x} />
+                    ))
+                }
+            </div>
+
+
 
         </div>
     )
