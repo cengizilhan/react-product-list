@@ -1,30 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
-import ProductList from './Components/ProductList';
-import Navbar from './Components/Navbar';
-import NavbarComp from './Components/Navbar';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import HomePage from "./Pages/Home";
+import AboutPage from "./Pages/About";
+import ProductPage from "./Pages/Product";
+import ProductListingPage from "./Pages/Products";
+import Navbar from "./Components/Layout/Navbar";
 
-
-
-function App() {
+export default function BasicExample() {
   return (
-    <div className="App">
+   
+    <Router>
       <div>
-        <NavbarComp></NavbarComp>
-      <ProductList></ProductList>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route index path="/home">
+            <Home />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/products">
+            <Products />
+          </Route>
+          <Route path="/product/:productId">
+            <Product productId={1} />
+          </Route>
+        </Switch>
       </div>
-      <header className="App-heasder">
-        
-       
-       
-       <div>
-       
-       </div>
-    
-      </header>
-      
-    </div>
+    </Router>
   );
 }
 
-export default App;
+function Home() {
+  return <HomePage />;
+}
+
+function About() {
+  return <AboutPage />;
+}
+
+function Products() {
+  return <ProductListingPage />;
+}
+
+function Product() {
+  return <ProductPage />;
+}
