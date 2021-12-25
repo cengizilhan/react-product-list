@@ -1,35 +1,34 @@
-import React from "react";
-import { Form } from "react-bootstrap";
-const marks = ["renault", "opel", "ford"];
-const categoryArr = ["cat1", "cat2"];
+import React from "react"
+import { Form } from "react-bootstrap"
+import { useSelector, useDispatch } from 'react-redux'
+import { filterrun, } from '../../Services/Redux/counterSlice'
+
 
 export default function ProductListFilter(props) {
-  props = {
-    brands: marks,
-    category: categoryArr,
-  };
+  const filterGroup1 = useSelector((state) => state.counter.filterGroup1);
+  const dispatch = useDispatch()
+  function filterLauncher(e){
+    //dispatch(filterGroup1());
+    
+    console.log(e.target.value);
+    dispatch(filterrun({ payload: e.target.value }));
+    
+  }
+  
   return (
-    <div class="p-3">
-      <div class="brand-container ">
-        <div>
-          <b>Markalar</b>
-        </div>
-        {props.brands.map((x) => (
-          <Form.Check type="checkbox" onClick={(e) => {
-            e.preventDefault();
-            
-          }} label={x} />
-        ))}
-      </div>
-
-      <div class="category-container ">
+    <div className="p-1">
+      <div className="brand-container ">
+        
         <div>
           <b>Kategoriler</b>
         </div>
-        {props.category.map((x) => (
-          <Form.Check type="checkbox" label={x} />
+        {filterGroup1.map((x) => (
+          <Form.Check type="checkbox"  onClick={(e) => filterLauncher(e)}
+           label={x} value={x} />
         ))}
       </div>
+
     </div>
   );
 }
+
