@@ -266,9 +266,16 @@
 */
 let arr2=[...new Set(arr.map(x=>x.category))];
 
+const map1 = new Map();
+arr2.map(x=>(map1.set(x,false)))
+arr2.map(x=>console.warn(x));
 
-        console.warn("islem");
-        console.table(arr2);
+
+map1.forEach((value, key) => {
+  console.warn(key)
+ } )
+
+        
 
     </script>
 

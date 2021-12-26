@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import {filterGroupCreator} from '../../Helpers/pListFilterHelper'
 let productArr = require("../data.json");
-let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
+let uniqFilterArr = filterGroupCreator(productArr);
+console.warn("sawac");
+console.table(uniqFilterArr);
 
 export const counterSlice = createSlice({
   name: 'counter',
