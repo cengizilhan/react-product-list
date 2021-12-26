@@ -1,32 +1,3 @@
-"use strict";
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function filterGroupCreator(arr) {
-  //get uniq keys to array
-  var arr2 = _toConsumableArray(new Set(arr.map(function (x) {
-    return x.category;
-  })));
-
-  var map1 = new Map(); //add Map to uniq elements
-
-  arr2.map(function (x) {
-    return map1.set(x, false);
-  });
-  return map1;
-  /* 
-  For Example:
-  Brands. map
-  Adidas - false (false mean unchecked)
-  */
-}
-/*
 const arr = [
     {
         "id": 1,
@@ -270,20 +241,19 @@ const arr = [
     }
 ]
 console.table(arr);
- let arr2 = arr.filter(function (value) {
+/* let arr2 = arr.filter(function (value) {
     return value.price >= 500;
-});
-
+});*/
+/*
 let arr2 = arr.filter(function (value) {
     return value.category =="women's clothing" ;
 })
-
+*/
 
 let arr2=arr.filter(element => element.title.includes("Rain"));
 
- 
+//get unique 
 arr2=[...new Set(arr.map(x=>x.category))];
 console.warn("islem");
 console.table(arr2);
 
-*/
