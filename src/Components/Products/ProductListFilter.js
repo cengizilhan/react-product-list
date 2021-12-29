@@ -23,7 +23,7 @@ export default function ProductListFilter(props) {
           <b>Kategoriler</b>
         </div>
         {filterGroup1.map((x) => (
-          <Form.Check type="checkbox"  onClick={(e) => filterLauncher(e)}
+          <Form.Check type="checkbox"  onChange={(e) => filterLauncher(e)}
            label={x} value={x} />
         ))}
       </div>
