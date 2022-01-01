@@ -15,11 +15,12 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var productArr = require("../data.json");
+var productArr = require("../data.json"); //let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
 
-var uniqFilterArr = _toConsumableArray(new Set(productArr.map(function (x) {
-  return x.category.categoryname;
-})));
+
+var uniqFilterArr = _toConsumableArray(new Map(productArr.map(function (item) {
+  return [JSON.stringify(item.category), item.category];
+})).values());
 
 var productListSlicer = (0, _toolkit.createSlice)({
   name: 'counter',

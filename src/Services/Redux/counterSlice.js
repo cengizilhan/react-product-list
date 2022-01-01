@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 let productArr = require("../data.json");
-let uniqFilterArr = [...new Set(productArr.map(x => x.category.categoryname))];
+//let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
+let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
+
+
 
 export const productListSlicer = createSlice({
   name: 'counter',
