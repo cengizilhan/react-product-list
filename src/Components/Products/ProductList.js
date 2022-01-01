@@ -25,11 +25,3 @@ export default function ProductList() {
     </div>
   );
 }
-/*        {
-       productArr.map(x=>(
-           <div>
-
-               <h6> {x.title} {x.price}$</h6>
-           </div>
-           ))
-   }*/

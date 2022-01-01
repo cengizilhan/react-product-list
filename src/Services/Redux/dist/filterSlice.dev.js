@@ -35,7 +35,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
       var querySelected = action.payload['payload'];
       var currentArr = state.productList;
       var filteredArr = currentArr.filter(function (value) {
-        return value.category.categoryname === querySelected;
+        return value.category.categoryid === querySelected;
       });
       state.productList = filteredArr;
     }

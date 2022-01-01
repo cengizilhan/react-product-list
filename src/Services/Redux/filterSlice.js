@@ -17,7 +17,7 @@ export const productListSlicer = createSlice({
       let querySelected = action.payload['payload']
       let currentArr=state.productList;
       let filteredArr = currentArr.filter(function (value) {
-        return value.category.categoryname === querySelected;
+        return value.category.categoryid === querySelected;
       })
     state.productList = filteredArr;
   },
