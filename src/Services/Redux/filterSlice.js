@@ -6,7 +6,7 @@ let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.cate
 
 
 export const productListSlicer = createSlice({
-  name: 'counter',
+  name: 'filter',
   initialState: {
     value: 0,
     productList: productArr,
