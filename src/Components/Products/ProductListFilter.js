@@ -25,7 +25,7 @@ export default function ProductListFilter(props) {
         {filterGroup1.map((x) => (
           (
           <Form.Check type="checkbox"  onChange={(e) => filterLauncher(e)}
-           label={x.categoryname}  key={x.categoryid} />
+           label={x.categoryname}  key={x.categoryid} value={x.categoryid} />
            )
         ))}
         
