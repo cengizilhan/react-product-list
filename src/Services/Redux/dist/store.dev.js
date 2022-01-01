@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default = (0, _toolkit.configureStore)({
   reducer: {
-    counter: _filterSlice["default"]
+    filter: _filterSlice["default"]
   }
 });
 

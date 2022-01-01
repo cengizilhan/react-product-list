@@ -5,7 +5,7 @@ import { filterrun, } from '../../Services/Redux/filterSlice'
 
 
 export default function ProductListFilter(props) {
-  const filterGroup1 = useSelector((state) => state.counter.filterGroup1);
+  const filterGroup1 = useSelector((state) => state.filter.filterGroup1);
   const dispatch = useDispatch()
   function filterLauncher(e){
     //dispatch(filterGroup1());

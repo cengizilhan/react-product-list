@@ -3,6 +3,6 @@ import filterReducer from './filterSlice'
 
 export default configureStore({
   reducer: {
-      counter:filterReducer,
+      filter:filterReducer,
   },
 })

@@ -5,7 +5,7 @@ import ProductListFilter from "./ProductListFilter";
 
 
 export default function ProductList() {
-  const productArr = useSelector((state) => state.counter.productList);
+  const productArr = useSelector((state) => state.filter.productList);
   return (
     <div>
     <div className="d-flex row m-0">
