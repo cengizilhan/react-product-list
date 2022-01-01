@@ -1,4 +1,7 @@
-kategorilerin id'sı olacak.
+kategorilerin id'sı olacak. +
+ürünjson.+
+category:id-name+
+
 kategoriler 3 tip olcak
 her kategori geri dönüşlerinde filtre düzenlenecek
 sıralama (her ürüne display order eklencek- standart sıralama bu olcak-created date )
@@ -9,5 +12,3 @@ v2
 sol filtreler accordion olcak-state düzenlcek.
 ürün 2. resim. hover sırasında gelcek
 
-ürünjson.
-category:id-name

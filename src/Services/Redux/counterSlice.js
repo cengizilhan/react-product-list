@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 let productArr = require("../data.json");
-let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
+let uniqFilterArr = [...new Set(productArr.map(x => x.category.categoryname))];
 
 export const productListSlicer = createSlice({
   name: 'counter',
@@ -14,7 +14,7 @@ export const productListSlicer = createSlice({
       let querySelected = action.payload['payload']
       let currentArr=state.productList;
       let filteredArr = currentArr.filter(function (value) {
-        return value.category === querySelected;
+        return value.category.categoryname === querySelected;
       })
     state.productList = filteredArr;
   },

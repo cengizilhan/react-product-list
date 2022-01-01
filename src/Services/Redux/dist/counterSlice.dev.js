@@ -18,7 +18,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var productArr = require("../data.json");
 
 var uniqFilterArr = _toConsumableArray(new Set(productArr.map(function (x) {
-  return x.category;
+  return x.category.categoryname;
 })));
 
 var productListSlicer = (0, _toolkit.createSlice)({
@@ -34,7 +34,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
       var querySelected = action.payload['payload'];
       var currentArr = state.productList;
       var filteredArr = currentArr.filter(function (value) {
-        return value.category === querySelected;
+        return value.category.categoryname === querySelected;
       });
       state.productList = filteredArr;
     }
