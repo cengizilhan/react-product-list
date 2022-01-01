@@ -6,7 +6,7 @@ import ProductPage from "./Pages/Product";
 import ProductListingPage from "./Pages/Products";
 import Navbar from "./Components/Layout/Navbar";
 
-import { Counter } from "./Components/Counter";
+
 
 
 
@@ -16,9 +16,7 @@ export default function BasicExample() {
    
     <Router>
       <div>
-        <div>counter 
-<Counter></Counter>
-        </div>
+        
       
         <Navbar />
         <Switch>

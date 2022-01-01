@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 let productArr = require("../data.json");
 let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
 
-export const counterSlice = createSlice({
+export const productListSlicer = createSlice({
   name: 'counter',
   initialState: {
     value: 0,
@@ -16,11 +16,9 @@ export const counterSlice = createSlice({
       let filteredArr = currentArr.filter(function (value) {
         return value.category === querySelected;
       })
-
-      state.productList = filteredArr;
-
-
-    },
+    state.productList = filteredArr;
+  },
+/*
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
@@ -34,10 +32,11 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload
     },
+    */
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, filterrun } = counterSlice.actions
+export const {  filterrun } = productListSlicer.actions
 
-export default counterSlice.reducer
+export default productListSlicer.reducer
