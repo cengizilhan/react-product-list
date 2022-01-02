@@ -1,12 +1,14 @@
 kategorilerin id'sı olacak. +
 ürünjson.+
 category:id-name+
+isimlendirmeler düzelcek+
+projeyi temizle artık +
 
-kategoriler 3 tip olcak
+kategoriler 3 tip olcak(ürün puanı,
+)
 her kategori geri dönüşlerinde filtre düzenlenecek
-sıralama (her ürüne display order eklencek- standart sıralama bu olcak-created date )
-isimlendirmeler düzelcek
-projeyi temizle artık 
+sıralama (her ürüne display order eklencek- standart sıralama bu olcak-created date )-
+
 
 v2
 sol filtreler accordion olcak-state düzenlcek.
