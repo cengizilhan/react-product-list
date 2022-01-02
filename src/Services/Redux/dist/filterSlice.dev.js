@@ -21,7 +21,7 @@ var categoriesArrv2 = categoriesArr.map(function (obj) {
   return _objectSpread({}, obj, {
     isActive: false
   });
-}); //add new property to array
+}); //add new property to array for filter
 //let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
 //let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
 
@@ -50,12 +50,18 @@ var productListSlicer = (0, _toolkit.createSlice)({
     filterrun: function filterrun(state, action) {
       var querySelected = parseInt(action.payload['payload']);
       var currentArr = state.productList;
-      console.log(state.productList);
-      var filteredArr = currentArr.filter(function (value) {
-        return value.category.categoryid === querySelected;
-      }); //state.productList = filteredArr;
+      var filteredArr = state.productList;
+      var testarr = state.filterGroup1; // filtre ayarlancak
 
-      productListSlicer.caseReducers.sortingPrice(state, action);
+      state.filterGroup1.map(function (x) {
+        if (x.categoryid === querySelected) {
+          alert("s");
+          filteredArr = currentArr.filter(function (value) {
+            return value.category.categoryid === querySelected;
+          });
+        }
+      });
+      state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: function sortingPrice(state, action) {
       var order = "asc";

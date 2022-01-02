@@ -1,7 +1,8 @@
 import { createSlice, current } from '@reduxjs/toolkit'
 let productArr = require("../data.json");
 let categoriesArr = require("../category.json");
-const categoriesArrv2 = categoriesArr.map(obj => ({ ...obj, isActive: false }))//add new property to array
+let categoriesArrv2 = categoriesArr.map(obj => ({ ...obj, isActive: false }))//add new property to array for filter
+
 //let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
 //let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
 
@@ -31,12 +32,22 @@ export const productListSlicer = createSlice({
     filterrun: (state, action) => {
       let querySelected = parseInt(action.payload['payload'])
       let currentArr = state.productList;
-      console.log(state.productList);
-      let filteredArr = currentArr.filter(function (value) {
-        return value.category.categoryid === querySelected;
-      })
-      //state.productList = filteredArr;
-      productListSlicer.caseReducers.sortingPrice(state, action);
+      let filteredArr=state.productList;
+
+      let testarr = state.filterGroup1;
+      // filtre ayarlancak
+      state.filterGroup1.map((x => {
+        if (x.categoryid === querySelected) {
+          alert("s");
+          filteredArr = currentArr.filter(function (value) {
+            return value.category.categoryid === querySelected;
+          })
+
+        }
+      }))
+
+      state.productList = filteredArr;
+      //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: (state, action) => {
       let order = "asc";
