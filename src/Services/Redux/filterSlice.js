@@ -33,18 +33,20 @@ export const productListSlicer = createSlice({
       let querySelected = parseInt(action.payload['payload'])
       let currentArr = state.productList;
       let filteredArr=state.productList;
-
-      let testarr = state.filterGroup1;
       // filtre ayarlancak
       state.filterGroup1.map((x => {
         if (x.categoryid === querySelected) {
-          alert("s");
-          filteredArr = currentArr.filter(function (value) {
-            return value.category.categoryid === querySelected;
-          })
-
+         x.isActive===false?x.isActive=true:x.isActive=false;
         }
       }))
+       let activeFilters=state.filterGroup1.filter(function (value) {
+        return value.isActive === true;
+      })
+      
+      filteredArr = currentArr.filter(function (value) {
+        return value.category.categoryid === querySelected;
+      })
+
 
       state.productList = filteredArr;
       //productListSlicer.caseReducers.sortingPrice(state, action);

@@ -50,16 +50,18 @@ var productListSlicer = (0, _toolkit.createSlice)({
     filterrun: function filterrun(state, action) {
       var querySelected = parseInt(action.payload['payload']);
       var currentArr = state.productList;
-      var filteredArr = state.productList;
-      var testarr = state.filterGroup1; // filtre ayarlancak
+      var filteredArr = state.productList; // filtre ayarlancak
 
       state.filterGroup1.map(function (x) {
         if (x.categoryid === querySelected) {
-          alert("s");
-          filteredArr = currentArr.filter(function (value) {
-            return value.category.categoryid === querySelected;
-          });
+          x.isActive === false ? x.isActive = true : x.isActive = false;
         }
+      });
+      var activeFilters = state.filterGroup1.filter(function (value) {
+        return value.isActive === true;
+      });
+      filteredArr = currentArr.filter(function (value) {
+        return value.category.categoryid === querySelected;
       });
       state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
     },
