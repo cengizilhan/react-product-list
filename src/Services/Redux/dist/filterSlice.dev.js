@@ -36,12 +36,14 @@ var productListSlicer = (0, _toolkit.createSlice)({
   },
   reducers: {
     filterrun: function filterrun(state, action) {
-      var querySelected = action.payload['payload'];
-      alert(querySelected);
+      var querySelected = parseInt(action.payload['payload']);
       var currentArr = state.productList;
+      console.log(state.productList);
       var filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
       });
+      console.log("sawa-");
+      console.log(filteredArr);
       state.productList = filteredArr;
       filterOptimizer();
     }
