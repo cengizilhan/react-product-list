@@ -1,7 +1,9 @@
 import { createSlice, current } from '@reduxjs/toolkit'
 let productArr = require("../data.json");
+let categoriesArr = require("../category.json");
+const categoriesArrv2 = categoriesArr.map(obj => ({ ...obj, isActive: false }))//add new property to array
 //let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
-let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
+//let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
 
 
 
@@ -10,19 +12,18 @@ export const productListSlicer = createSlice({
   initialState: {
     value: 0,
     productList: productArr,
-    filterGroup1: uniqFilterArr,//Categories
+    filterGroup1: categoriesArrv2,//Categories
     pagination: {
       rowsPerPage: 1,
       count: 1,
       totalPages: 5 //Math.ceil(count / rowsPerPage)
-
     },
-    sorting: 
-      {
-        sortName: "sortingPrice",
-        sortType: "asc",
-        isActive: false
-      },
+    sorting:
+    {
+      sortName: "sortingPrice",
+      sortType: "asc",
+      isActive: false
+    },
     setFilter: "",
     searchKey: ""
   },
@@ -35,38 +36,35 @@ export const productListSlicer = createSlice({
         return value.category.categoryid === querySelected;
       })
       //state.productList = filteredArr;
-
       productListSlicer.caseReducers.sortingPrice(state, action);
-
-
     },
     sortingPrice: (state, action) => {
       let order = "asc";
-      let sortState=state.sorting;
+      let sortState = state.sorting;
       let arr = state.productList;
       switch (order) {
         case "asc":
           arr.sort(function (a, b) { return a.price - b.price });
           state.productList = arr;
           //sort state update
-          sortState.sortName="sortingPrice";
-          sortState.sortType="asc";
-          sortState.isActive=true;
-          state.sorting=sortState;
-          
-        
+          sortState.sortName = "sortingPrice";
+          sortState.sortType = "asc";
+          sortState.isActive = true;
+          state.sorting = sortState;
+
+
           break;
         case "desc":
           arr.sort(function (a, b) { return b.price - a.price });
           state.productList = arr;
           //sort state update
-          sortState.sortName="sortingPrice";
-          sortState.sortType="desc";
-          sortState.isActive=true;
-          state.sorting=sortState;
+          sortState.sortName = "sortingPrice";
+          sortState.sortType = "desc";
+          sortState.isActive = true;
+          state.sorting = sortState;
           break;
         default:
-          
+
           break;
       }
     },

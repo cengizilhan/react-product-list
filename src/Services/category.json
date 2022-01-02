@@ -1,0 +1,12 @@
+[
+  { "categoryname": "men's clothing", "categoryid": 0 },
+  { "categoryname": "jewelery", "categoryid": 1 },
+  {
+    "categoryname": "electronis",
+    "categoryid": 2
+  },
+  {
+    "categoryname": "women's clothing",
+    "categoryid": 3
+  }
+]
