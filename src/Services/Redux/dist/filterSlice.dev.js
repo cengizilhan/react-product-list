@@ -22,10 +22,6 @@ var uniqFilterArr = _toConsumableArray(new Map(productArr.map(function (item) {
   return [JSON.stringify(item.category), item.category];
 })).values());
 
-function filterOptimizer() {
-  console.log("s");
-}
-
 var productListSlicer = (0, _toolkit.createSlice)({
   name: 'filter',
   initialState: {
@@ -42,10 +38,11 @@ var productListSlicer = (0, _toolkit.createSlice)({
       var filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
       });
-      console.log("sawa-");
-      console.log(filteredArr);
       state.productList = filteredArr;
-      filterOptimizer();
+      productListSlicer.caseReducers.filterOptimizer(state, action);
+    },
+    filterOptimizer: function filterOptimizer(state, action) {
+      alert("test");
     }
     /*
         increment: (state) => {

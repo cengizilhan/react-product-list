@@ -3,9 +3,7 @@ let productArr = require("../data.json");
 //let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
 let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
 
-function filterOptimizer() {
-  console.log("s");
-  }
+
 
 export const productListSlicer = createSlice({
   name: 'filter',
@@ -22,11 +20,15 @@ export const productListSlicer = createSlice({
       let filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
       })
-      console.log("sawa-");
-      console.log(filteredArr);
     state.productList = filteredArr;
-    filterOptimizer();
+    
+    productListSlicer.caseReducers.filterOptimizer(state,action);
+
+    
   },
+  filterOptimizer: (state,action) => { 
+    alert("test");
+  }
 /*
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
