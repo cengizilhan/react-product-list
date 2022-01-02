@@ -35,7 +35,11 @@ var productListSlicer = (0, _toolkit.createSlice)({
       totalPages: 5 //Math.ceil(count / rowsPerPage)
 
     },
-    sorting: "",
+    sorting: {
+      sortName: "sortingPrice",
+      sortType: "asc",
+      isActive: false
+    },
     setFilter: "",
     searchKey: ""
   },
@@ -46,12 +50,13 @@ var productListSlicer = (0, _toolkit.createSlice)({
       console.log(state.productList);
       var filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
-      });
-      state.productList = filteredArr;
-      productListSlicer.caseReducers.sortingName(state, action);
+      }); //state.productList = filteredArr;
+
+      productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: function sortingPrice(state, action) {
-      var order = "desc";
+      var order = "asc";
+      var sortState = state.sorting;
       var arr = state.productList;
 
       switch (order) {
@@ -59,14 +64,24 @@ var productListSlicer = (0, _toolkit.createSlice)({
           arr.sort(function (a, b) {
             return a.price - b.price;
           });
-          state.productList = arr;
+          state.productList = arr; //sort state update
+
+          sortState.sortName = "sortingPrice";
+          sortState.sortType = "asc";
+          sortState.isActive = true;
+          state.sorting = sortState;
           break;
 
         case "desc":
           arr.sort(function (a, b) {
             return b.price - a.price;
           });
-          state.productList = arr;
+          state.productList = arr; //sort state update
+
+          sortState.sortName = "sortingPrice";
+          sortState.sortType = "desc";
+          sortState.isActive = true;
+          state.sorting = sortState;
           break;
 
         default:

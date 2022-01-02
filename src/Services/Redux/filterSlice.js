@@ -17,7 +17,12 @@ export const productListSlicer = createSlice({
       totalPages: 5 //Math.ceil(count / rowsPerPage)
 
     },
-    sorting: "",
+    sorting: 
+      {
+        sortName: "sortingPrice",
+        sortType: "asc",
+        isActive: false
+      },
     setFilter: "",
     searchKey: ""
   },
@@ -29,25 +34,39 @@ export const productListSlicer = createSlice({
       let filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
       })
-      state.productList = filteredArr;
+      //state.productList = filteredArr;
 
-      productListSlicer.caseReducers.sortingName(state, action);
+      productListSlicer.caseReducers.sortingPrice(state, action);
 
 
     },
     sortingPrice: (state, action) => {
-      let order = "desc";
+      let order = "asc";
+      let sortState=state.sorting;
       let arr = state.productList;
       switch (order) {
         case "asc":
           arr.sort(function (a, b) { return a.price - b.price });
           state.productList = arr;
+          //sort state update
+          sortState.sortName="sortingPrice";
+          sortState.sortType="asc";
+          sortState.isActive=true;
+          state.sorting=sortState;
+          
+        
           break;
         case "desc":
           arr.sort(function (a, b) { return b.price - a.price });
           state.productList = arr;
+          //sort state update
+          sortState.sortName="sortingPrice";
+          sortState.sortType="desc";
+          sortState.isActive=true;
+          state.sorting=sortState;
           break;
         default:
+          
           break;
       }
     },
