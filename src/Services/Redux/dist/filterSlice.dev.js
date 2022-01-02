@@ -48,11 +48,71 @@ var productListSlicer = (0, _toolkit.createSlice)({
         return value.category.categoryid === querySelected;
       });
       state.productList = filteredArr;
-      productListSlicer.caseReducers.filterOptimizer(state, action);
+      productListSlicer.caseReducers.sortingName(state, action);
     },
-    filterOptimizer: function filterOptimizer(state, action) {
-      alert("test");
-    }
+    sortingPrice: function sortingPrice(state, action) {
+      var order = "desc";
+      var arr = state.productList;
+
+      switch (order) {
+        case "asc":
+          arr.sort(function (a, b) {
+            return a.price - b.price;
+          });
+          state.productList = arr;
+          break;
+
+        case "desc":
+          arr.sort(function (a, b) {
+            return b.price - a.price;
+          });
+          state.productList = arr;
+          break;
+
+        default:
+          break;
+      }
+    },
+    sortingName: function sortingName(state, action) {
+      var order = "desc";
+      var arr = state.productList;
+
+      switch (order) {
+        case "asc":
+          arr.sort(function (a, b) {
+            if (a.title < b.title) {
+              return -1;
+            }
+
+            if (a.title > b.title) {
+              return 1;
+            }
+
+            return 0;
+          });
+          state.productList = arr;
+          break;
+
+        case "desc":
+          arr.sort(function (a, b) {
+            if (a.title < b.title) {
+              return 1;
+            }
+
+            if (a.title > b.title) {
+              return -1;
+            }
+
+            return 0;
+          });
+          state.productList = arr;
+          break;
+
+        default:
+          break;
+      }
+    },
+    filterOptimizer: function filterOptimizer(state, action) {}
     /*
         increment: (state) => {
           // Redux Toolkit allows us to write "mutating" logic in reducers. It

@@ -11,52 +11,91 @@ export const productListSlicer = createSlice({
     value: 0,
     productList: productArr,
     filterGroup1: uniqFilterArr,//Categories
-    pagination:{
-      rowsPerPage:1,
-      count:1,
-      totalPages:5 //Math.ceil(count / rowsPerPage)
+    pagination: {
+      rowsPerPage: 1,
+      count: 1,
+      totalPages: 5 //Math.ceil(count / rowsPerPage)
 
     },
-    sorting:"",
-    setFilter:"",
-    searchKey:""
+    sorting: "",
+    setFilter: "",
+    searchKey: ""
   },
   reducers: {
     filterrun: (state, action) => {
       let querySelected = parseInt(action.payload['payload'])
-      let currentArr=state.productList;
+      let currentArr = state.productList;
       console.log(state.productList);
       let filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
       })
-    state.productList = filteredArr;
-    
-    productListSlicer.caseReducers.filterOptimizer(state,action);
+      state.productList = filteredArr;
 
-    
-  },
-  filterOptimizer: (state,action) => { 
-    alert("test");
-  }
-/*
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1
+      productListSlicer.caseReducers.sortingName(state, action);
+
+
     },
-    decrement: (state) => {
-      state.value -= 1
+    sortingPrice: (state, action) => {
+      let order = "desc";
+      let arr = state.productList;
+      switch (order) {
+        case "asc":
+          arr.sort(function (a, b) { return a.price - b.price });
+          state.productList = arr;
+          break;
+        case "desc":
+          arr.sort(function (a, b) { return b.price - a.price });
+          state.productList = arr;
+          break;
+        default:
+          break;
+      }
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    sortingName: (state, action) => {
+      let order = "desc";
+      let arr = state.productList;
+      switch (order) {
+        case "asc":
+          arr.sort(function (a, b) {
+            if (a.title < b.title) { return -1; }
+            if (a.title > b.title) { return 1; }
+            return 0;
+          })
+          state.productList = arr;
+          break;
+        case "desc":
+          arr.sort(function (a, b) {
+            if (a.title < b.title) { return 1; }
+            if (a.title > b.title) { return -1; }
+            return 0;
+          })
+          state.productList = arr;
+          break;
+        default:
+          break;
+      }
     },
-    */
+    filterOptimizer: (state, action) => {
+    }
+    /*
+        increment: (state) => {
+          // Redux Toolkit allows us to write "mutating" logic in reducers. It
+          // doesn't actually mutate the state because it uses the Immer library,
+          // which detects changes to a "draft state" and produces a brand new
+          // immutable state based off those changes
+          state.value += 1
+        },
+        decrement: (state) => {
+          state.value -= 1
+        },
+        incrementByAmount: (state, action) => {
+          state.value += action.payload
+        },
+        */
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {  filterrun } = productListSlicer.actions
+export const { filterrun } = productListSlicer.actions
 
 export default productListSlicer.reducer
