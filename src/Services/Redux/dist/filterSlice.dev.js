@@ -22,6 +22,10 @@ var uniqFilterArr = _toConsumableArray(new Map(productArr.map(function (item) {
   return [JSON.stringify(item.category), item.category];
 })).values());
 
+function filterOptimizer() {
+  console.log("s");
+}
+
 var productListSlicer = (0, _toolkit.createSlice)({
   name: 'filter',
   initialState: {
@@ -33,11 +37,13 @@ var productListSlicer = (0, _toolkit.createSlice)({
   reducers: {
     filterrun: function filterrun(state, action) {
       var querySelected = action.payload['payload'];
+      alert(querySelected);
       var currentArr = state.productList;
       var filteredArr = currentArr.filter(function (value) {
         return value.category.categoryid === querySelected;
       });
       state.productList = filteredArr;
+      filterOptimizer();
     }
     /*
         increment: (state) => {
