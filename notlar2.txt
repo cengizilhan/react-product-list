@@ -1,0 +1,11 @@
+Pagination
+Sorting for strings, Booleans, numbers, and dates (case-insensitive)
+Filtering for strings, Booleans, numbers, and dates (case-insensitive)
+
+ const [activePage, setActivePage] = useState(1)
+  const rowsPerPage = 3
+  const count = rows.length
+  const totalPages = Math.ceil(count / rowsPerPage)
+  const calculatedRows = rows.slice((activePage - 1) * rowsPerPage, activePage * rowsPerPage)
+
+https://www.taniarascia.com/front-end-tables-sort-filter-paginate/

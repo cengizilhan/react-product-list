@@ -27,8 +27,17 @@ var productListSlicer = (0, _toolkit.createSlice)({
   initialState: {
     value: 0,
     productList: productArr,
-    filterGroup1: uniqFilterArr //Categories
+    filterGroup1: uniqFilterArr,
+    //Categories
+    pagination: {
+      rowsPerPage: 1,
+      count: 1,
+      totalPages: 5 //Math.ceil(count / rowsPerPage)
 
+    },
+    sorting: "",
+    setFilter: "",
+    searchKey: ""
   },
   reducers: {
     filterrun: function filterrun(state, action) {

@@ -1,7 +1,7 @@
 import React from "react"
 import { Form } from "react-bootstrap"
 import { useSelector, useDispatch } from 'react-redux'
-import { filterrun, } from '../../Services/Redux/filterSlice'
+import { filterrun } from '../../Services/Redux/filterSlice'
 
 
 export default function ProductListFilter(props) {
