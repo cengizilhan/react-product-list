@@ -59,9 +59,12 @@ var productListSlicer = (0, _toolkit.createSlice)({
       });
       var activeFilters = state.filterGroup1.filter(function (value) {
         return value.isActive === true;
-      });
-      filteredArr = currentArr.filter(function (value) {
-        return value.category.categoryid === querySelected;
+      }); //aktif olan her filtre için tüm liste dolanıp, eşleşenlerle yeni listeye atancak.
+
+      activeFilters.map(function (x) {
+        return filteredArr = currentArr.filter(function (value) {
+          return value.category.categoryid === x.categoryid;
+        });
       });
       state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
     },

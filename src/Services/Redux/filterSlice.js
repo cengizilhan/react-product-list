@@ -42,10 +42,13 @@ export const productListSlicer = createSlice({
        let activeFilters=state.filterGroup1.filter(function (value) {
         return value.isActive === true;
       })
+      //aktif olan her filtre için tüm liste dolanıp, eşleşenlerle yeni listeye atancak.
+      activeFilters.map(x=>(
+        filteredArr = currentArr.filter(function (value) {
+          return value.category.categoryid === x.categoryid;
+        })
+      ))
       
-      filteredArr = currentArr.filter(function (value) {
-        return value.category.categoryid === querySelected;
-      })
 
 
       state.productList = filteredArr;
