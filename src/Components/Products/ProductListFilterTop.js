@@ -30,7 +30,7 @@ export default function ProductListFilterTop() {
     //soldan filtre atılınca sıralama default'a çekilecek
 
     return (
-        <div>
+        <div className='container mt-3 col-md-3'>
             <FormSelect type="select" onChange={(e) => sorter(e)} >
                 <option>
                     Sort By Default
