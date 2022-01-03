@@ -51,8 +51,10 @@ export const productListSlicer = createSlice({
         
       }
     }
-
-    state.productList = filteredArr;
+    
+    filteredArr.length===0?state.productList=productArr:state.productList = filteredArr;
+    
+    
       //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: (state, action) => {

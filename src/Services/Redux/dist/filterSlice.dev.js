@@ -86,7 +86,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
         }
       }
 
-      state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
+      filteredArr.length === 0 ? state.productList = productArr : state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: function sortingPrice(state, action) {
       var order = "asc";
