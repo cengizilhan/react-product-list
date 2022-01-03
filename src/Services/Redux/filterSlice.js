@@ -58,7 +58,7 @@ export const productListSlicer = createSlice({
       //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: (state, action) => {
-      let order = "asc";
+      let order = action.payload['payload'];
       let sortState = state.sorting;
       let arr = state.productList;
       switch (order) {
@@ -88,7 +88,7 @@ export const productListSlicer = createSlice({
       }
     },
     sortingName: (state, action) => {
-      let order = "desc";
+      let order = action.payload['payload'];
       let arr = state.productList;
       switch (order) {
         case "asc":
@@ -132,6 +132,6 @@ export const productListSlicer = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { filterrun } = productListSlicer.actions
+export const { filterrun, sortingName, sortingPrice } = productListSlicer.actions
 
 export default productListSlicer.reducer

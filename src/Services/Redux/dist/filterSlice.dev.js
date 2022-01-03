@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.filterrun = exports.productListSlicer = void 0;
+exports["default"] = exports.sortingPrice = exports.sortingName = exports.filterrun = exports.productListSlicer = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 
@@ -89,7 +89,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
       filteredArr.length === 0 ? state.productList = productArr : state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: function sortingPrice(state, action) {
-      var order = "asc";
+      var order = action.payload['payload'];
       var sortState = state.sorting;
       var arr = state.productList;
 
@@ -123,7 +123,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
       }
     },
     sortingName: function sortingName(state, action) {
-      var order = "desc";
+      var order = action.payload['payload'];
       var arr = state.productList;
 
       switch (order) {
@@ -182,7 +182,12 @@ var productListSlicer = (0, _toolkit.createSlice)({
 }); // Action creators are generated for each case reducer function
 
 exports.productListSlicer = productListSlicer;
-var filterrun = productListSlicer.actions.filterrun;
+var _productListSlicer$ac = productListSlicer.actions,
+    filterrun = _productListSlicer$ac.filterrun,
+    sortingName = _productListSlicer$ac.sortingName,
+    sortingPrice = _productListSlicer$ac.sortingPrice;
+exports.sortingPrice = sortingPrice;
+exports.sortingName = sortingName;
 exports.filterrun = filterrun;
 var _default = productListSlicer.reducer;
 exports["default"] = _default;

@@ -1,16 +1,16 @@
 import React from "react"
-import { Form } from "react-bootstrap"
-import { useSelector, useDispatch } from 'react-redux'
-import { filterrun } from '../../Services/Redux/filterSlice'
+  import { Form } from "react-bootstrap"
+  import { useSelector, useDispatch } from 'react-redux'
+  import { filterrun } from '../../Services/Redux/filterSlice'
 
 
-export default function ProductListFilter(props) {
-  const filterGroup1 = useSelector((state) => state.filter.filterGroup1);
-  const dispatch = useDispatch()
-  function filterLauncher(e){
-    //dispatch(filterGroup1());
-    
-    console.log(e.target.value);
+  export default function ProductListFilter(props) {
+    const filterGroup1 = useSelector((state) => state.filter.filterGroup1);
+    const dispatch = useDispatch()
+    function filterLauncher(e){
+      //dispatch(filterGroup1());
+      
+      console.log(e.target.value);
     dispatch(filterrun({ payload: e.target.value }));
     
   }
