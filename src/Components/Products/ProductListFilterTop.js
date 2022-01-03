@@ -27,7 +27,7 @@ export default function ProductListFilterTop() {
 
 
     }
-    //soldan filtre atılınca sıralama default'a çekilecek
+    //soldan filtre atılınca sıralama default'a çekilecek veya her filtrelemede sorting çalışcak
 
     return (
         <div className='container mt-3 col-md-3'>
