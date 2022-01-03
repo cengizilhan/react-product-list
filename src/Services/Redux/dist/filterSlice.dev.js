@@ -48,24 +48,44 @@ var productListSlicer = (0, _toolkit.createSlice)({
   },
   reducers: {
     filterrun: function filterrun(state, action) {
-      var querySelected = parseInt(action.payload['payload']);
-      var currentArr = state.productList;
-      var filteredArr = state.productList; // filtre ayarlancak
+      //Click event e.value to variable.
+      var querySelected = parseInt(action.payload['payload']); // set  isActive state  when click checkbox
 
       state.filterGroup1.map(function (x) {
         if (x.categoryid === querySelected) {
           x.isActive === false ? x.isActive = true : x.isActive = false;
         }
       });
-      var activeFilters = state.filterGroup1.filter(function (value) {
-        return value.isActive === true;
-      }); //aktif olan her filtre için tüm liste dolanıp, eşleşenlerle yeni listeye atancak.
+      var filteredArr = [];
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-      activeFilters.map(function (x) {
-        return filteredArr = currentArr.filter(function (value) {
-          return value.category.categoryid === x.categoryid;
-        });
-      });
+      try {
+        for (var _iterator = productArr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var x = _step.value;
+          var productCategory = x.category.categoryid;
+          var filters = (0, _toolkit.current)(state.filterGroup1);
+
+          if (productCategory === filters[productCategory].categoryid && filters[productCategory].isActive === true) {
+            filteredArr.push(x);
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
       state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: function sortingPrice(state, action) {

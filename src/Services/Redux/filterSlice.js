@@ -30,28 +30,29 @@ export const productListSlicer = createSlice({
   },
   reducers: {
     filterrun: (state, action) => {
+      //Click event e.value to variable.
       let querySelected = parseInt(action.payload['payload'])
-      let currentArr = state.productList;
-      let filteredArr=state.productList;
-      // filtre ayarlancak
+      
+      // set  isActive state  when click checkbox
       state.filterGroup1.map((x => {
         if (x.categoryid === querySelected) {
          x.isActive===false?x.isActive=true:x.isActive=false;
         }
       }))
-       let activeFilters=state.filterGroup1.filter(function (value) {
-        return value.isActive === true;
-      })
-      //aktif olan her filtre için tüm liste dolanıp, eşleşenlerle yeni listeye atancak.
-      activeFilters.map(x=>(
-        filteredArr = currentArr.filter(function (value) {
-          return value.category.categoryid === x.categoryid;
-        })
-      ))
       
+      let filteredArr=[];
+      for (let x of productArr) {
+      var productCategory=x.category.categoryid;
+      let filters= current(state.filterGroup1);
+      if(productCategory===filters[productCategory].categoryid && 
+        filters[productCategory].isActive===true)
+        {
+          filteredArr.push(x)
+        
+      }
+    }
 
-
-      state.productList = filteredArr;
+    state.productList = filteredArr;
       //productListSlicer.caseReducers.sortingPrice(state, action);
     },
     sortingPrice: (state, action) => {
