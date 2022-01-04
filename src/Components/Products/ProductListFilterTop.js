@@ -30,25 +30,27 @@ export default function ProductListFilterTop() {
     //soldan filtre atılınca sıralama default'a çekilecek veya her filtrelemede sorting çalışcak
 
     return (
-        <div className='container mt-3 col-md-3'>
-            <FormSelect type="select" onChange={(e) => sorter(e)} >
-                <option>
-                    Sort By Default
-                </option>
-                <option name="sortingName" value="sortingName-asc">
-                    Product Name A-Z
-                </option>
-                <option name="sortingName" value="sortingName-desc">
-                    Product Name Z-A
-                </option>
-                <option name="sortingPrice" value="sortingPrice-asc">
-                    Product Price 1-9
-                </option>
-                <option name="sortingPrice" value="sortingPrice-desc">
-                    Product Price 9-1
-                </option>
-            </FormSelect>
-
+        <div className='row mt-3 '>
+            <div className='col-md-9 col-sm-6 col-12'></div>
+            <div className=' col-md-3 col-sm-6 col-12'>
+                <FormSelect type="select" onChange={(e) => sorter(e)} >
+                    <option>
+                        Sort By Default
+                    </option>
+                    <option name="sortingName" value="sortingName-asc">
+                        Product Name A-Z
+                    </option>
+                    <option name="sortingName" value="sortingName-desc">
+                        Product Name Z-A
+                    </option>
+                    <option name="sortingPrice" value="sortingPrice-asc">
+                        Product Price 1-9
+                    </option>
+                    <option name="sortingPrice" value="sortingPrice-desc">
+                        Product Price 9-1
+                    </option>
+                </FormSelect>
+            </div>
         </div>
     )
 }
