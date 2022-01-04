@@ -3,6 +3,7 @@ let productArr = require("../data.json");
 let categoriesArr = require("../category.json");
 let categoriesArrv2 = categoriesArr.map(obj => ({ ...obj, isActive: false }))//add new property to array for filter
 
+
 //let uniqFilterArr = [...new Set(productArr.map(x => x.category))];
 //let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
 
@@ -53,17 +54,56 @@ export const productListSlicer = createSlice({
     }
     
     filteredArr.length===0?state.productList=productArr:state.productList = filteredArr;
+
     
+    
+    
+    console.log("active before")
+    console.warn(state.sorting.isActive)
+    if(state.sorting.isActive)
+    {
+      console.log("active")
+      action=state.sorting.sortType;//sorting type from state
+      switch (state.sorting.sortName) {
+        case "sortingName":
+          console.log("sorting name")
+          productListSlicer.caseReducers.sortingName(state,action);
+          
+          break;
+          case "sortingPrice":
+            console.log("sorting price")
+            productListSlicer.caseReducers.sortingPrice(state,{payload:'asc'});
+            //payload doğru gitmediği için çalışmıyor. düzenlencek.
+            //
+          
+          break;
+      
+        default:
+          break;
+      }
+
+    }
     
       //productListSlicer.caseReducers.sortingPrice(state, action);
     },
+    sortingOrganiser:(state,action)=>{
+    
+      console.warn(action);
+      
+      
+      
+    },
+    /* """" sorting name'lerde property active edilecek*/
     sortingPrice: (state, action) => {
+      
+console.log("work price")
       let order = action.payload['payload'];
       let sortState = state.sorting;
       let arr = state.productList;
       switch (order) {
         case "asc":
           arr.sort(function (a, b) { return a.price - b.price });
+          console.warn("sorging price asc")
           state.productList = arr;
           //sort state update
           sortState.sortName = "sortingPrice";
@@ -75,6 +115,7 @@ export const productListSlicer = createSlice({
           break;
         case "desc":
           arr.sort(function (a, b) { return b.price - a.price });
+          console.warn("sorging price desc")
           state.productList = arr;
           //sort state update
           sortState.sortName = "sortingPrice";

@@ -86,9 +86,42 @@ var productListSlicer = (0, _toolkit.createSlice)({
         }
       }
 
-      filteredArr.length === 0 ? state.productList = productArr : state.productList = filteredArr; //productListSlicer.caseReducers.sortingPrice(state, action);
+      filteredArr.length === 0 ? state.productList = productArr : state.productList = filteredArr;
+      console.log("active before");
+      console.warn(state.sorting.isActive);
+
+      if (state.sorting.isActive) {
+        console.log("active");
+        action = state.sorting.sortType; //sorting type from state
+
+        switch (state.sorting.sortName) {
+          case "sortingName":
+            console.log("sorting name");
+            productListSlicer.caseReducers.sortingName(state, action);
+            break;
+
+          case "sortingPrice":
+            console.log("sorting price");
+            productListSlicer.caseReducers.sortingPrice(state, {
+              payload: 'asc'
+            }); //payload doğru gitmediği için çalışmıyor. düzenlencek.
+            //
+
+            break;
+
+          default:
+            break;
+        }
+      } //productListSlicer.caseReducers.sortingPrice(state, action);
+
     },
+    sortingOrganiser: function sortingOrganiser(state, action) {
+      console.warn(action);
+    },
+
+    /* """" sorting name'lerde property active edilecek*/
     sortingPrice: function sortingPrice(state, action) {
+      console.log("work price");
       var order = action.payload['payload'];
       var sortState = state.sorting;
       var arr = state.productList;
@@ -98,6 +131,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
           arr.sort(function (a, b) {
             return a.price - b.price;
           });
+          console.warn("sorging price asc");
           state.productList = arr; //sort state update
 
           sortState.sortName = "sortingPrice";
@@ -110,6 +144,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
           arr.sort(function (a, b) {
             return b.price - a.price;
           });
+          console.warn("sorging price desc");
           state.productList = arr; //sort state update
 
           sortState.sortName = "sortingPrice";
