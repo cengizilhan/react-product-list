@@ -26,7 +26,7 @@ var categoriesArrv2 = categoriesArr.map(function (obj) {
 //let uniqFilterArr = [...new Map(productArr.map(item => [JSON.stringify(item.category), item.category])).values()];
 
 var productListSlicer = (0, _toolkit.createSlice)({
-  name: 'filter',
+  name: "filter",
   initialState: {
     value: 0,
     productList: productArr,
@@ -49,7 +49,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
   reducers: {
     filterrun: function filterrun(state, action) {
       //Click event e.value to variable.
-      var querySelected = parseInt(action.payload['payload']); // set  isActive state  when click checkbox
+      var querySelected = parseInt(action.payload["payload"]); // set  isActive state  when click checkbox
 
       state.filterGroup1.map(function (x) {
         if (x.categoryid === querySelected) {
@@ -103,7 +103,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
           case "sortingPrice":
             console.log("sorting price");
             productListSlicer.caseReducers.sortingPrice(state, {
-              payload: 'asc'
+              payload: "asc"
             }); //payload doğru gitmediği için çalışmıyor. düzenlencek.
             //
 
@@ -122,7 +122,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
     /* """" sorting name'lerde property active edilecek*/
     sortingPrice: function sortingPrice(state, action) {
       console.log("work price");
-      var order = action.payload['payload'];
+      var order = action.payload["payload"];
       var sortState = state.sorting;
       var arr = state.productList;
 
@@ -138,6 +138,16 @@ var productListSlicer = (0, _toolkit.createSlice)({
           sortState.sortType = "asc";
           sortState.isActive = true;
           state.sorting = sortState;
+          /* bu olcak.
+          sıralama tek reducerde olcak.
+          
+           sortState = {
+             sortName: "string",
+             sortType: "string",
+             isActive: "boolean",
+           };
+           */
+
           break;
 
         case "desc":
@@ -158,7 +168,7 @@ var productListSlicer = (0, _toolkit.createSlice)({
       }
     },
     sortingName: function sortingName(state, action) {
-      var order = action.payload['payload'];
+      var order = action.payload["payload"];
       var arr = state.productList;
 
       switch (order) {
