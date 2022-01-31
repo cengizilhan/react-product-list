@@ -49,9 +49,7 @@ export const productListSlicer = createSlice({
         }
       }
 
-      filteredArr.length === 0
-        ? (state.productList = productArr)
-        : (state.productList = filteredArr);
+      filteredArr.length === 0 ? (state.productList = productArr) : (state.productList = filteredArr);
 
       console.log("active before");
       console.warn(state.sorting.isActive);
@@ -103,15 +101,15 @@ export const productListSlicer = createSlice({
           sortState.isActive = true;
           state.sorting = sortState;
 
-         /* bu olcak.
-         sıralama tek reducerde olcak.
-         
-          sortState = {
-            sortName: "string",
-            sortType: "string",
-            isActive: "boolean",
-          };
-          */
+          /* bu olcak.
+          sıralama tek reducerde olcak.
+          
+           sortState = {
+             sortName: "string",
+             sortType: "string",
+             isActive: "boolean",
+           };
+           */
 
           break;
         case "desc":
@@ -162,7 +160,7 @@ export const productListSlicer = createSlice({
           break;
       }
     },
-    filterOptimizer: (state, action) => {},
+    filterOptimizer: (state, action) => { },
     /*
         increment: (state) => {
           // Redux Toolkit allows us to write "mutating" logic in reducers. It
