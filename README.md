@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Product List and Filtering - Redux
 
 In this project that I have created using React.js, I have implemented a product listing and filtering page using Redux. The products are fetched from the fakestoreapi.
 
