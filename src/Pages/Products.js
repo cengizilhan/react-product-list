@@ -5,7 +5,7 @@ import ProductList from '../Components/Products/ProductList';
 export default function Products() {
     return (
         <>
-           <ProductList />
+            <ProductList />
         </>
     )
 }

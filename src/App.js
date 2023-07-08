@@ -13,23 +13,18 @@ import Navbar from "./Components/Layout/Navbar";
 
 export default function BasicExample() {
   return (
-   
+
     <Router>
       <div>
-        
-      
+
+
         <Navbar />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route index path="/home">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/products">
+
+          <Route path="/products" index >
             <Products />
           </Route>
           <Route path="/product/:productId">
